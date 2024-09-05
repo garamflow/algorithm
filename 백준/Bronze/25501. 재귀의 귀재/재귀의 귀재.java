@@ -1,20 +1,17 @@
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
     static int number = 0;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
-        sc.nextLine();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int x = Integer.parseInt(br.readLine());
 
-        
         for (int i = 0; i < x; i++) {
-			String str = sc.nextLine();
+            String str = br.readLine();
             number = 0;
             System.out.println(isPalindrome(str) + " " + number);
         }
-        sc.close();
     }
 
     public static int recursion(String str, int l, int r) {
