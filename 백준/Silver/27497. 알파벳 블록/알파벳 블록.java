@@ -9,21 +9,21 @@ public class Main {
         // 버튼 누른 횟수와 그 횟수에 맞게 Deque 구현
         // linkedList는 최근에 앞에 저장했는지 뒤에 저장했는지를 기록하는 역할
         int N = Integer.parseInt(st.nextToken());
-        Deque<String> deque = new LinkedList<>();
-        LinkedList<String> linkedList = new LinkedList<>();
+        Deque<String> deque = new ArrayDeque<>();
+        Deque<String> memory = new ArrayDeque<>();
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
             if (x == 1) {
                 deque.addLast(st.nextToken());
-                linkedList.addLast("last");
+                memory.addLast("last");
             } else if (x == 2) {
                 deque.addFirst(st.nextToken());
-                linkedList.addLast("first");
+                memory.addLast("first");
             } else if (x == 3) {
-                if (!linkedList.isEmpty()) {
-                    if (linkedList.removeLast().equals("last")) {
+                if (!memory.isEmpty()) {
+                    if (memory.removeLast().equals("last")) {
                         deque.removeLast();
                     } else {
                         deque.removeFirst();
