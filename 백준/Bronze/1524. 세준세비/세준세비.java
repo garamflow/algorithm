@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
         int testcases = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < testcases; i++) {
@@ -39,17 +39,15 @@ public class Main {
             }
 
             if(sejunPriorityQueue.isEmpty() && !sebiPriorityQueue.isEmpty()){
-                bw.write("B");
+                sb.append("B").append("\n");
             } else if (!sejunPriorityQueue.isEmpty() && sebiPriorityQueue.isEmpty()) {
-                bw.write("S");
+                sb.append("S").append("\n");
             } else {
-                bw.write("C");
+                sb.append("C").append("\n");
             }
-            bw.newLine();
         }
 
-        bw.flush();
-        bw.close();
+        System.out.println(sb);
         br.close();
     }
 }
