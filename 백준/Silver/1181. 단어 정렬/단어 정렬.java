@@ -4,38 +4,25 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
-    static class Word {
-        String word;
-        int length;
-
-        public Word(String word, int length) {
-            this.word = word;
-            this.length = length;
-        }
-    }
-
     public static void main(String[] args) throws IOException {
-        // 길이가 짧은것부터
-        // 길이가 같으면 사전순
-        // 중복단어 제거
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int wordCount = Integer.parseInt(br.readLine());
 
-        Set<Word> wordSet = new TreeSet<>((word1, word2) -> {
-            if (word1.length != word2.length) {
-                return Integer.compare(word1.length, word2.length);
+        Set<String> wordSet = new TreeSet<>((firstWord, secondWord) -> {
+            if (firstWord.length() != secondWord.length()) {
+                return Integer.compare(firstWord.length(), secondWord.length());
             }
-            return word1.word.compareTo(word2.word);
+            return firstWord.compareTo(secondWord);
         });
 
         for (int i = 0; i < wordCount; i++) {
             String inputWord = br.readLine();
-            wordSet.add(new Word(inputWord, inputWord.length()));
+            wordSet.add(inputWord);
         }
 
-        for (Word w: wordSet) {
-            sb.append(w.word).append("\n");
+        for (String w: wordSet) {
+            sb.append(w).append("\n");
         }
 
         System.out.println(sb);
